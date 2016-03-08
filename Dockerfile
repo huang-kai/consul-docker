@@ -1,16 +1,16 @@
-FROM phusion/baseimage
+ROM alpine:edge
 MAINTAINER Kyne Huang <kyne.huang@hujiang.com>
-ENV REFRESHED_AT 2015-10-14
+ENV REFRESHED_AT 2015-12-28
 
-RUN apt-get -qqy update
-RUN apt-get -qqy install curl unzip
+RUN  apk add --update unzip curl bash
 
-ADD https://dl.bintray.com/mitchellh/consul/0.5.2_linux_amd64.zip /tmp/consul.zip
+ADD https://releases.hashicorp.com/consul/0.6.3/consul_0.6.3_linux_amd64.zip /tmp/consul.zip
 RUN cd /usr/sbin && unzip /tmp/consul.zip && chmod +x /usr/sbin/consul && rm /tmp/consul.zip
-ADD https://dl.bintray.com/mitchellh/consul/0.5.2_web_ui.zip /tmp/webui.zip
-RUN cd /tmp/ && unzip webui.zip && mv dist/ /webui/
+ADD https://releases.hashicorp.com/consul/0.6.3/consul_0.6.3_web_ui.zip /tmp/webui.zip
+RUN mkdir -p /webui
+RUN cd /webui/ && unzip /tmp/webui.zip
 
-ADD config/consul_base.json /config/
+ADD consul_base.json /config/
 
 EXPOSE 53/udp 8300 8301 8301/udp 8302 8302/udp 8400 8500
 
