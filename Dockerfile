@@ -10,7 +10,7 @@ ADD https://releases.hashicorp.com/consul/0.6.4/consul_0.6.4_web_ui.zip /tmp/web
 RUN mkdir -p /webui
 RUN cd /webui/ && unzip /tmp/webui.zip
 
-ADD consul_base.json /config/
+ADD config/consul_base.json /config/
 
 EXPOSE 53/udp 8300 8301 8301/udp 8302 8302/udp 8400 8500
 
