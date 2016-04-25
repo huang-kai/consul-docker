@@ -1,12 +1,12 @@
-FROM alpine:edge
+FROM alpine
 MAINTAINER Kyne Huang <kyne.huang@hujiang.com>
 ENV REFRESHED_AT 2015-12-28
 
 RUN  apk add --update unzip curl bash
 
-ADD https://releases.hashicorp.com/consul/0.6.3/consul_0.6.3_linux_amd64.zip /tmp/consul.zip
+ADD https://releases.hashicorp.com/consul/0.6.4/consul_0.6.4_linux_amd64.zip /tmp/consul.zip
 RUN cd /usr/sbin && unzip /tmp/consul.zip && chmod +x /usr/sbin/consul && rm /tmp/consul.zip
-ADD https://releases.hashicorp.com/consul/0.6.3/consul_0.6.3_web_ui.zip /tmp/webui.zip
+ADD https://releases.hashicorp.com/consul/0.6.4/consul_0.6.4_web_ui.zip /tmp/webui.zip
 RUN mkdir -p /webui
 RUN cd /webui/ && unzip /tmp/webui.zip
 
