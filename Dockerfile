@@ -1,4 +1,4 @@
-ROM alpine:edge
+FROM alpine:edge
 MAINTAINER Kyne Huang <kyne.huang@hujiang.com>
 ENV REFRESHED_AT 2015-12-28
 
